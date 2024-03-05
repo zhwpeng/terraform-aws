@@ -2,7 +2,7 @@ This document will show you how to create a AWS EC2 instance in a private subnet
 
 Step 1: Clone this repository.
 
-  # git clone https://github.com/zhwpeng/tf-aws.git
+  git clone https://github.com/zhwpeng/tf-aws.git
 
 Step 2: This repository requires AWS CLI. Please follow this document (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to install it.
 
@@ -12,7 +12,7 @@ Step 3. Create Access Key ID and Secret Access Key so AWS CLI can access AWS res
 
 Step 4. This repository requires a AWS profile called default. Continue to run the following command to create default profile.
 
-  # aws configure 
+  aws configure 
 
   Enter Access Key ID and Secret Access Key which are created in step 3. The configuration will be saved to file $HOME/.aws/credentials. Check this file and make sure it looks similiar to the following: 
 
@@ -22,29 +22,29 @@ Step 4. This repository requires a AWS profile called default. Continue to run t
 
 Step 5. Create SSH keys which will be used to log into AWS EC2 instance.
 
-  # cd aws-one-zone
+  cd aws-one-zone
   or
-  # cd aws-three-zones
-  # mkdir keys
-  # cd keys
-  # ssh-keygen -f mykeypair
-  # ssh-add -K mykeypair  
+  cd aws-three-zones
+  mkdir keys
+  cd keys
+  ssh-keygen -f mykeypair
+  ssh-add -K mykeypair  
 
 Step 6. This repository also requires Terraform. Please follow this document (https://developer.hashicorp.com/terraform/install) to install it.
 
 Step 7. Deploy.
 
-  # cd aws-one-zone
+  cd aws-one-zone
   or
-  # cd aws-three-zones
-  # terraform init
-  # terraform apply
+  cd aws-three-zones
+  terraform init
+  terraform apply
 
 Step 8. When step 7 is completed, two AWS EC2 instances will be created: bastion-instance and private-instance. Note down the public ip of bastion-instance and private ip of private-instance and add the following into SSH config file.
 
-  # cd $HOME/.ssh
-  # touch config
-  # chmod 600 config 
+  cd $HOME/.ssh
+  touch config
+  chmod 600 config 
 
   Add the following into file config.
 
@@ -57,4 +57,4 @@ Step 8. When step 7 is completed, two AWS EC2 instances will be created: bastion
       User ec2-user
       ProxyCommand ssh -q -W %h:%p bastion-instance
 
-  # ssh private-instance
+  ssh private-instance
