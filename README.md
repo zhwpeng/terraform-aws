@@ -1,8 +1,8 @@
-https://towardsdatascience.com/connecting-to-an-ec2-instance-in-a-private-subnet-on-aws-38a3b86f58fb
+This document will show you how to create a AWS EC2 instance in a private subnet and how to log into it. In the end, we will achieve the topology in https://github.com/zhwpeng/tf-aws/blob/main/aws-private-subnet.png
 
 To get started clone the repo:
 
-   git clone https://github.com/HDaniels1991/AWS-Bastion-Host.git```
+   git clone https://github.com/zhwpeng/tf-aws.git
 
 The repo requires you to have an AWS profile called: default. It is possible to change the profile name in the variables.tf file.
 
