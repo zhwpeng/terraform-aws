@@ -1,5 +1,7 @@
 # Create AWS EC2 instance in private subnet
-This document will show you how to create AWS EC2 instance in private subnet and how to log into it. In the end, we will achieve [this topology](https://github.com/zhwpeng/tf-aws/blob/main/aws-private-subnet.png).
+This document will show you how to create AWS EC2 instance in private subnet and how to log into it. In the end, we will achieve the following topology.
+
+<img width="693" alt="aws-private-subnet" src="https://github.com/zhwpeng/tf-aws/assets/34671416/d62bd2c3-7e50-466f-a435-f4c6756b458e">
 
 Step 1. Clone this repository.
 ```
