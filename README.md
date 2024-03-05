@@ -1,16 +1,17 @@
-This document will show you how to create a AWS EC2 instance in a private subnet and how to log into it. In the end, we will achieve the topology in https://github.com/zhwpeng/tf-aws/blob/main/aws-private-subnet.png
+# Create AWS EC2 instance in private subnet
+This document will show you how to create AWS EC2 instance in a private subnet and how to log into it. In the end, we will achieve [this topology](https://github.com/zhwpeng/tf-aws/blob/main/aws-private-subnet.png).
 
-Step 1: Clone this repository.
+**Step 1: Clone this repository.**
 
   git clone https://github.com/zhwpeng/tf-aws.git
 
-Step 2: This repository requires AWS CLI. Please follow this document (https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to install it.
+**Step 2: This repository requires AWS CLI. Please follow [this document](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to install it.**
 
-Step 3. Create Access Key ID and Secret Access Key so AWS CLI can access AWS resources.
+**Step 3. Create Access Key ID and Secret Access Key so AWS CLI can access AWS resources.**
 
   Log into AWS Management Console -> IAM -> Users -> Security credentials -> Create access key
 
-Step 4. This repository requires a AWS profile called default. Continue to run the following command to create default profile.
+**Step 4. This repository requires a AWS profile called default. Continue to run the following command to create default profile.**
 
   aws configure 
 
@@ -20,7 +21,7 @@ Step 4. This repository requires a AWS profile called default. Continue to run t
   aws_access_key_id = <Access Key ID> 
   aws_secret_access_key = <Secret Access Key> 
 
-Step 5. Create SSH keys which will be used to log into AWS EC2 instance.
+**Step 5. Create SSH keys which will be used to log into AWS EC2 instance.**
 
   cd aws-one-zone
   or
@@ -30,9 +31,9 @@ Step 5. Create SSH keys which will be used to log into AWS EC2 instance.
   ssh-keygen -f mykeypair
   ssh-add -K mykeypair  
 
-Step 6. This repository also requires Terraform. Please follow this document (https://developer.hashicorp.com/terraform/install) to install it.
+**Step 6. This repository also requires Terraform. Please follow [this document](https://developer.hashicorp.com/terraform/install) to install it.**
 
-Step 7. Deploy.
+**Step 7. Deploy.**
 
   cd aws-one-zone
   or
@@ -40,7 +41,7 @@ Step 7. Deploy.
   terraform init
   terraform apply
 
-Step 8. When step 7 is completed, two AWS EC2 instances will be created: bastion-instance and private-instance. Note down the public ip of bastion-instance and private ip of private-instance and add the following into SSH config file.
+**Step 8. When step 7 is completed, two AWS EC2 instances will be created: bastion-instance and private-instance. Note down the public ip of bastion-instance and private ip of private-instance and add the following into SSH config file.**
 
   cd $HOME/.ssh
   touch config
