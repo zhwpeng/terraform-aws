@@ -1,4 +1,4 @@
-# Terraform Configuration for AWS VPC, EC2 and RDS
+# Create AWS RDS MySQL and AWS EC2 Instance
 This document will show you how to create AWS RDS MySQL in two private subnets and Ubuntu server in one public subnet. In the end, we will achieve the following topology.
 
 <img src="https://github.com/zhwpeng/tf-aws/assets/34671416/84f0aa7a-06d2-4913-bf99-df06baf737e1"></br>
