@@ -25,7 +25,7 @@ Step 4. This repository requires a AWS profile called default for authentication
 ```
 Step 5. Create SSH keys which will be used to log into AWS EC2 instance.
 ```
-  cd aws-one-zone or cd aws-three-zones
+  cd aws-three-zones
   mkdir keys
   cd keys
   ssh-keygen -f mykeypair
@@ -35,7 +35,7 @@ Step 6. This repository also requires Terraform. Please follow [this document](h
 
 Step 7. Deploy.
 ```
-  cd aws-one-zone or cd aws-three-zones
+  cd aws-three-zones
   terraform init
   terraform apply
 ```
