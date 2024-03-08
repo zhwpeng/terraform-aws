@@ -5,7 +5,7 @@ This document will show you how to create AWS EC2 instance in private subnet and
 
 Step 1. Clone this repository.
 ```
-  git clone https://github.com/zhwpeng/terraform-aws.git
+  git clone https://github.com/zhwpeng/tf-aws.git
 ```
 Step 2. This repository requires AWS CLI. Please follow [this document](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) to install it.
 
