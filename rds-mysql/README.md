@@ -1,26 +1,35 @@
 # Terraform Configuration for AWS VPC, EC2 and RDS
+This document will show you how to create AWS RDS MySQL in two private subnets and Ubuntu server in one public subnet. In the end, we will achieve the following topology.
 
-### This project contains terraform configuration files on creating EC2 and RDS instances inside a Custom VPC on AWS. Here is the architecture of what will be created:
+<img src="https://github.com/zhwpeng/tf-aws/assets/34671416/84f0aa7a-06d2-4913-bf99-df06baf737e1"></br>
 
-![Custom VPC architecture for AWS](https://miro.medium.com/max/700/1*Oxp7FZT4Z9RWqpnJn-hHqw.png)
+Step 1. Install AWS CLI and Terraform.
+- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+- [Terraform](https://www.terraform.io/downloads)
 
-## Set Up
-### Prerequisites
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configuration
-- [Terraform](https://www.terraform.io/downloads) installed
-
-### Create the Secrets file
-Create a secrets file called ***secrets.tfvars*** and populate it with the follow secrets:
-  - **db_username** <-- this is going to be the master user for RDS
-  - **db_password** <-- this is going to be the RDS master user's password
-  - **my_ip** <-- this is going to be your public IP
-
-## Running the Configuration
-### Initializing the Terraform directory
-Run the command: `terraform init`
-
-### Apply the Terraform Config to AWS
-Run the command: `terraform apply -var-file="secrets.tfvars"`
-
-### To destroy everything that was created by the Terraform Config
-Run the command: `terraform destroy -var-file="secrets.tfvars"`
+Step 2. Create secrets file.  
+Create a secrets file called secrets.tfvars and populate it with the follow secrets:
+```
+  db_username: master user
+  db_password: password of master user
+  my_ip: public IP of you laptop. You can find it out via https://whatismyipaddress.com
+```
+Step 3. Create keypair.
+```
+ssh-keygen -t rsa -b 4096 -m pem -f tutorial_kp
+openssl rsa -in tutorial_kp -outform pem > tutorial_kp.pem
+chmod 400 tutorial_kp.pem
+```
+Step 4. Deploy.
+```
+terraform init
+terraform apply -var-file="secrets.tfvars"
+```
+Step 5. Test.
+```
+ssh -i tutorial_kp.pem ubuntu@<public ip of ubuntu server>
+sudo su -
+apt install mysql-client
+mysql -h <database-endpoint> -u <db-username> -p
+show DATABASES;
+```
